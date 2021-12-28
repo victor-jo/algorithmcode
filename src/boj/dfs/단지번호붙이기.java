@@ -4,7 +4,10 @@ package boj.dfs;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * https://www.acmicpc.net/problem/2667
+ *
+ */
 public class 단지번호붙이기 {
 //public class Main {
 
