@@ -1,17 +1,16 @@
 class Solution {
     public int nearestValidPoint(int x, int y, int[][] points) {
-        int distance = Integer.MAX_VALUE;
-        int result = -1;
-        for (int i=0; i<points.length; ++i) {
-            if (x == points[i][0] && distance > Math.abs(y - points[i][1])) {
-                distance = Math.abs(y - points[i][1]);
-                result = i;
-            }
-            if (y == points[i][1] && distance > Math.abs(x - points[i][0])) {
-                distance = Math.abs(x - points[i][0]);
-                result = i;
+        int md = Integer.MAX_VALUE;
+        int r = -1;
+        for (int i=0; i<points.length; ++i) {            
+            if (x == points[i][0] || y == points[i][1]) {
+                int d = Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]);
+                if (md > d) {
+                    md = d;
+                    r = i;
+                }
             }
         }
-        return result;
+        return r;
     }
 }
