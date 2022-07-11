@@ -1,9 +1,5 @@
 class Solution {
     public boolean areAlmostEqual(String s1, String s2) {
-        if (s1.length() == 2) {
-            return s1.equals(s2);
-        }
-        
         int[] p1 = new int[26];
         int[] p2 = new int[26];
         int diff = 0;
