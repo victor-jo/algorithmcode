@@ -4,23 +4,25 @@ class Solution {
             return nums[0];
         }
         
-        int sum = nums[0];
-        int kmx = nums[0];
-        int mx = nums[0];
-        int kmn = nums[0];
-        int mn = nums[0];
-        for (int i=1; i<nums.length; ++i) {
-            sum += nums[i];
-            kmx = Math.max(kmx + nums[i], nums[i]);
-            kmn = Math.min(kmn + nums[i], nums[i]);
-            mx = Math.max(mx, kmx);
-            mn = Math.min(mn, kmn);
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
         }
         
-        if (mn == sum) {
-            return mx;
-        }
+        int m = kadane(nums, 0, nums.length, 1);
+        int n1 = kadane(nums, 1, nums.length, -1);
+        int n2 = kadane(nums, 0, nums.length-1, -1);
         
-        return Math.max(mx, sum - mn);
+        return Math.max(m, Math.max(sum + n1, sum + n2));
+    }
+    
+    public int kadane(int[] nums, int s, int e, int sign) {
+        int result = Integer.MIN_VALUE;
+        int num = Integer.MIN_VALUE;
+        for (int i=s; i<e; ++i) {
+            num = sign * nums[i] + Math.max(num, 0);
+            result = Math.max(result, num);
+        }
+        return result;
     }
 }
