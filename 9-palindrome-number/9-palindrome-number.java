@@ -29,7 +29,6 @@ class Solution {
         }
         else { // odd
             for (int i=0; i<length; ++i) {
-                System.out.println("enter i = " + i);
                 if (mid == i) {
                     // ignore
                 }
