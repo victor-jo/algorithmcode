@@ -14,10 +14,6 @@ class Solution {
             return true;
         }
         
-        System.out.println("x = " + x);
-        System.out.println("length = " + length);
-        System.out.println("mid = " + mid);
-        
         if ((length % 2) == 0) { // even
             for (int i=0; i<length; ++i) {
                 if (mid <= i) {
@@ -43,9 +39,7 @@ class Solution {
                     }
                 }
                 else {
-                    System.out.println("enter");
                     stack[++top] = (x % 10);
-                    System.out.println("peek = " + stack[top]);
                 }
                 x /= 10;
             }
