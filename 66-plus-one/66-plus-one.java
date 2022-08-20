@@ -1,20 +1,12 @@
 class Solution {
     public int[] plusOne(int[] digits) {
-        boolean increment = true;
+        int increment = 1;
         for (int i=digits.length-1; i>=0; --i) {
-            int value = increment ? digits[i] + 1 : digits[i];
-            if (value >= 10) {
-                digits[i] = 0;
-            }
-            else if (increment) {
-                digits[i] = value;
-                increment = false;
-            }
-            else {
-                digits[i] = value;
-            }   
+            digits[i] = digits[i] + increment;
+            increment = digits[i] / 10;
+            digits[i] = digits[i] % 10;
         }
-        if (increment) {
+        if (increment == 1) {
             int[] result = new int[digits.length+1];
             result[0] = 1;
             return result;
