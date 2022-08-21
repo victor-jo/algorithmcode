@@ -9,10 +9,9 @@ class Solution {
         int total = 0;
         
         while (len1 >= 0 || len2 >= 0) {
-            char v1 = len1 >= 0 ? a.charAt(len1--) : '0';
-            char v2 = len2 >= 0 ? b.charAt(len2--) : '0';
-            
-            total = (v1 - '0') + (v2 - '0') + carry;
+            total = carry;
+            total += len1 >= 0 ? a.charAt(len1--) - '0' : 0;
+            total += len2 >= 0 ? b.charAt(len2--) - '0' : 0;
             
             if (total == 3) {
                 total = 1;
