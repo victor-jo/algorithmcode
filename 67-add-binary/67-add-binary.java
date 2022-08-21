@@ -9,10 +9,10 @@ class Solution {
         int total = 0;
         
         while (len1 >= 0 || len2 >= 0) {
-            int v1 = len1 >= 0 ? a.charAt(len1--) - '0' : 0;
-            int v2 = len2 >= 0 ? b.charAt(len2--) - '0' : 0;
+            char v1 = len1 >= 0 ? a.charAt(len1--) : '0';
+            char v2 = len2 >= 0 ? b.charAt(len2--) : '0';
             
-            total = v1 + v2 + carry;
+            total = (v1 - '0') + (v2 - '0') + carry;
             
             if (total == 3) {
                 total = 1;
@@ -32,6 +32,7 @@ class Solution {
         if (carry == 1) {
             sb.append(1);
         }
+        
         return sb.reverse().toString();
     }
 }
