@@ -1,32 +1,24 @@
 class Solution {
     public String addBinary(String a, String b) {
-        if (a.length() > b.length()) {
-            return addBinary(a.toCharArray(), b.toCharArray());
-        }
-        else {
-            return addBinary(b.toCharArray(), a.toCharArray());
-        }
-    }
-    
-    public String addBinary(char[] chars1, char[] chars2) {
-        int[] stack = new int[10001];
-        int top = -1;
+        StringBuilder sb = new StringBuilder();
         
-        for (char ch : chars2) {
-            stack[++top] = ch - '0';
-        }
+        int len1 = a.length() - 1;
+        int len2 = b.length() - 1;
         
-        String result = "";
         int carry = 0;
-        for (int i=chars1.length-1; i>=0; --i) {
-            int v1 = chars1[i] - '0';
-            int v2 = top == -1 ? 0 : stack[top--];
+        
+        while (len1 >= 0 || len2 >= 0) {
+            int v1 = len1 >= 0 ? a.charAt(len1--) - '0' : 0;
+            int v2 = len2 >= 0 ? b.charAt(len2--) - '0' : 0;
             
             int total = v1 + v2 + carry;
-            result = (total % 2) + result;
+            sb.append(total % 2);
             carry = total / 2;
         }
         
-        return carry == 1 ? 1 + result : result;
+        if (carry == 1) {
+            sb.append(1);
+        }
+        return sb.reverse().toString();
     }
 }
