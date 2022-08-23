@@ -1,11 +1,23 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        for (int i=0; i<matrix.length; ++i) {
-            int length = matrix[i].length;
-            if (matrix[i][0] <= target && matrix[i][length-1] >= target) {
-                return searchBinarySearch(matrix[i], target);
+        int begin = 0;
+        int end = matrix.length - 1;
+        
+        while (begin <= end) {
+            int mid = (begin + end) / 2;
+            int length = matrix[mid].length;
+            
+            if (matrix[mid][0] <= target && matrix[mid][length-1] >= target) {
+                return searchBinarySearch(matrix[mid], target);
+            }
+            else if (matrix[mid][0] > target) {
+                end = mid - 1;
+            }
+            else {
+                begin = mid + 1;
             }
         }
+        
         return false;
     }
     
