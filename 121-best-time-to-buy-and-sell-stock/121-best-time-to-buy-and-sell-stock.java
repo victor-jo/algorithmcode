@@ -3,12 +3,12 @@ class Solution {
         int p = prices[0];
         int profit = 0;
         for (int i=1; i<prices.length; ++i) {
-            int q = prices[i] - p;
-            if (profit < q) {
-                profit = q;
+            int q = prices[i];
+            if (profit < (q - p)) {
+                profit = (q - p);
             }
-            if (p > prices[i]) {
-                p = prices[i];
+            if (p > q) {
+                p = q;
             }
         }
         return profit;
