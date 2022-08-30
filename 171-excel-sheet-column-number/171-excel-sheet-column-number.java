@@ -10,7 +10,6 @@ class Solution {
                 value *= 26;
             }
             sum += (value * (chars[i] - 'A' + 1));
-            System.out.println(sum);
         }
         return sum;
     }
