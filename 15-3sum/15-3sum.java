@@ -2,18 +2,6 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         
-        boolean onlyZero = true;
-        for (int num : nums) {
-            if (num != 0) {
-                onlyZero = false;
-            }
-        }
-        
-        if (onlyZero) {
-            result.add(Arrays.asList(0, 0, 0));
-            return result;
-        }
-        
         Arrays.sort(nums);
         
         for (int k=0; k<nums.length; ++k) {
