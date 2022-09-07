@@ -13,8 +13,6 @@ class Solution {
                 if (usedChance) {
                     return false;
                 }
-                System.out.println("(s.substring(l, r) = " + s.substring(l, r));
-                System.out.println("(s.substring(l+1, r) = " + s.substring(l+1, r));
                 return validPalindrome(s.substring(l, r), true)
                     || validPalindrome(s.substring(l+1, r+1), true);
             }
