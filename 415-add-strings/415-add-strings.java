@@ -19,7 +19,7 @@ class Solution {
             --j;
         }
         
-        if (carry > 0) {
+        if (carry != 0) {
             sb.append(carry);
         }
         return sb.reverse().toString();
