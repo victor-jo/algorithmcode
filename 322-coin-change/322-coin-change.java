@@ -1,42 +1,21 @@
 class Solution {
+    
     public int coinChange(int[] coins, int amount) {
-        if (amount < 1) {
-            return 0;
-        }
+        int inf = 10001;
+        int[] dp = new int[inf];
         
-        Deque<Integer> queue = new ArrayDeque<>();
-        Set<Integer> visited = new HashSet<>();
+        Arrays.fill(dp, inf);
         
-        queue.addFirst(amount);
-        visited.add(amount);
+        dp[0] = 0;
         
-        int level = 1;
-        
-        while (!queue.isEmpty()) {
-            int size = queue.size();        
-            while (size-- > 0) {
-                int here = queue.removeLast();
-                
-                for (int coin : coins) {
-                    int value = here - coin;
-                    
-                    if (value == 0) {
-                        return level;
-                    }
-                
-                    if (value < 0) {
-                        continue;
-                    }
-                    
-                    if (!visited.contains(value)) {
-                        queue.addFirst(value);
-                        visited.add(value);
-                    }
+        for (int i=1; i<=amount; ++i) {
+            for (int coin : coins) {
+                if (coin <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
-            level += 1;
         }
         
-        return -1;
+        return dp[amount] == inf ? -1 : dp[amount];
     }
 }
