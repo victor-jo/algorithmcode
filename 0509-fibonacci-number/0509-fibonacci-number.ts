@@ -4,10 +4,7 @@ function fib(n: number): number {
     if (n == 0) {
         return one;
     }
-    if (n == 1) {
-        return two;
-    }
-    --n;
+    n -= 1;
     while (n-- > 0) {
         let temp: number = one + two;
         one = two;
