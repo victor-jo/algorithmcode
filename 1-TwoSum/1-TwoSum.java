@@ -1,0 +1,14 @@
+// Last updated: 2026. 7. 16. 오전 11:29:10
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i=0; i<nums.length; ++i) {
+            Integer find = hashMap.get(target - nums[i]);
+            if (find != null) {
+                return new int[] {find, i};
+            }
+            hashMap.put(nums[i], i);
+        }
+        return new int[] {0, 0};
+    }
+}
